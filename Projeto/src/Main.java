@@ -25,7 +25,7 @@ public class Main {
 		tweets = processing(tweets);
 		updateDatabase(tweets);*/
 		
-		printSeriesSentiment(getSeriesSentiment());
+		printSeriesSentiment(getSentiment());
 		
 		
 	}
@@ -98,8 +98,8 @@ public class Main {
 			System.out.println("Tweets adicionados no banco");
 	}
 	
-	// recupera um vetor com o número de tweets por sentimento de cada série
-	public static int[][] getSeriesSentiment () {		
+	// recupera uma matriz com o número de tweets por sentimento de cada série
+	public static int[][] getSentiment () {		
 		TweetDAO tweetDao = new TweetDAO();
 		int[][] sentiment = new int[5][5];
 		int index = 0;		
@@ -111,6 +111,12 @@ public class Main {
 		
 		return sentiment;
 	}
+	
+	// recupera um vetor com o número de tweets por sentimento de uma série específica
+	public static int[] getSerieSentiment (String serie) {		
+		TweetDAO tweetDao = new TweetDAO();			
+		return tweetDao.getSeriesSentiment(serie);			
+	}	
 	
 	// para fins de teste, imprime uma tabela com o número de tweets por sentimento de cada série
 	public static void printSeriesSentiment (int[][] sentiment) {		
