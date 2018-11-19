@@ -15,15 +15,24 @@ import analyzer.Translation;
 import analyzer.SentimentAnalyzer;
 
 public class Main {
+	
+	static String[] series = {"FLASH", "GREY", "HOUSE", "SPN", "TWD"};
 
 	public static void main(String[] args) throws IOException {
-		ArrayList<Tweet> tweets = readArchive();
+		
+		/* Código para processar tweets*/
+		/*ArrayList<Tweet> tweets = readArchive();
 		tweets = processing(tweets);
-		insertDatabase(tweets);
+		updateDatabase(tweets);*/
+		
+		printSeriesSentiment(getSeriesSentiment());
+		
+		
 	}
 
+	// leitura do arquivo csv
 	public static ArrayList<Tweet> readArchive() throws IOException {		
-		String arquivoCSV = "datasetTweet.csv";
+		String arquivoCSV = "exceptions.csv";
 		BufferedReader br = null;
 		String linha = "";
 		String csvDivisor = ";";
@@ -81,5 +90,37 @@ public class Main {
 		tweetDao.insert(tweets);
 		System.out.println("Tweets adicionados no banco");
 	}
-
+	
+	// atualiza dataset de tweets no banco de dados
+	public static void updateDatabase(ArrayList<Tweet> tweets) {
+			TweetDAO tweetDao = new TweetDAO();
+			tweetDao.update(tweets);
+			System.out.println("Tweets adicionados no banco");
+	}
+	
+	// recupera um vetor com o número de tweets por sentimento de cada série
+	public static int[][] getSeriesSentiment () {		
+		TweetDAO tweetDao = new TweetDAO();
+		int[][] sentiment = new int[5][5];
+		int index = 0;		
+		
+		while (index < series.length) {			
+			sentiment[index] = tweetDao.getSeriesSentiment(series[index]);			
+			index++;
+		}
+		
+		return sentiment;
+	}
+	
+	// para fins de teste, imprime uma tabela com o número de tweets por sentimento de cada série
+	public static void printSeriesSentiment (int[][] sentiment) {		
+		for (int i = 0; i < sentiment.length; i++) {			
+			System.out.print(series[i] + " | ");
+			for (int j = 0; j < sentiment.length; j++) {
+				System.out.print(sentiment[i][j]);
+				System.out.print(" | ");
+			}
+			System.out.println("\n");
+		}		
+	}
 }
