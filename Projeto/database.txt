@@ -3,11 +3,11 @@ CREATE DATABASE TwitterAnalyzer CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 SET character_set_client = utf8mb4 ;
 CREATE TABLE `tweets` (
   `id` bigint NOT NULL,
-  `date` varchar(100) DEFAULT NULL,
-  `time` varchar(100) DEFAULT NULL,
-  `text` varchar(500) DEFAULT NULL,
-  `processed_text` varchar(500) DEFAULT NULL,
-  `hashtag` varchar(200) DEFAULT NULL,
+  `date` varchar(200) DEFAULT NULL,
+  `time` varchar(200) DEFAULT NULL,
+  `text` varchar(2000) DEFAULT NULL,
+  `processed_text` varchar(2000) DEFAULT NULL,
+  `hashtag` varchar(1000) DEFAULT NULL,
   `sentiment` int DEFAULT NULL,
   `serie` varchar(200) DEFAULT NULL,
   `language` varchar(200) DEFAULT NULL,
