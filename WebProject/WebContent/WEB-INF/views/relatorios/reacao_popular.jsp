@@ -35,7 +35,7 @@
 				<img src="${seriesSentiment.pic}" width="460px" height="300px" />
 			</div>
 			<div class="nome-emoction">
-				<b> Principal sentimento</b>: Negativo
+				<b> Principal sentimento</b>: ${seriesSentiment.mainSentiment}
 			</div>
 			<div class="hashtag">
 				<b> Hashtags: </b> ${seriesSentiment.hashtag}

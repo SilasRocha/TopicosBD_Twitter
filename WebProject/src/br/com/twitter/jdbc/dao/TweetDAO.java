@@ -79,43 +79,69 @@ public class TweetDAO {
 		}
 	}
 
-	public SeriesSentiment getSeriesSentiment(String serie) {
-
+public SeriesSentiment getSeriesSentiment(String serie) {
+		
 		SeriesSentiment sentiment = new SeriesSentiment();
-
-		String sql = "SELECT QR1.SERIE, QR1.SENTIMENT, QR1.CONT_SENT, ROUND((CONT_SENT/CONT_TOTAL)*100,0) AS PORCENT "
-				+ "FROM " + "(SELECT SERIE, SENTIMENT, Count(SENTIMENT) AS CONT_SENT " + "FROM tweets "
-				+ "GROUP BY SERIE, SENTIMENT) AS QR1 " + "INNER JOIN " + "(SELECT SERIE, Count(ID) AS CONT_TOTAL "
-				+ "FROM tweets " + "GROUP BY SERIE) AS QR2 ON QR1.SERIE = QR2.SERIE " + "WHERE QR1.SERIE =? "
-				+ "ORDER BY QR1.SENTIMENT;";
-
+		
+		int maxSent = 0;
+		int countSent = 0;
+		
+		String sql = "SELECT QR1.SERIE, QR1.SENTIMENT, QR1.CONT_SENT, ROUND((CONT_SENT/CONT_TOTAL)*100,0) AS PORCENT " + 
+				"FROM " + 
+				"(SELECT SERIE, SENTIMENT, Count(SENTIMENT) AS CONT_SENT " + 
+				"FROM tweets " + 
+				"GROUP BY SERIE, SENTIMENT) AS QR1 " + 
+				"INNER JOIN " + 
+				"(SELECT SERIE, Count(ID) AS CONT_TOTAL " + 
+				"FROM tweets " + 
+				"GROUP BY SERIE) AS QR2 ON QR1.SERIE = QR2.SERIE " + 
+				"WHERE QR1.SERIE =? "+
+				"ORDER BY QR1.SENTIMENT;";
+		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, serie);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				if (rs.getInt("sentiment") == 0) {
+				if(rs.getInt("CONT_SENT")>countSent) {
+					countSent = rs.getInt("CONT_SENT");
+					maxSent = rs.getInt("sentiment");
+				}
+				
+				if(rs.getInt("sentiment")==0) {
 					sentiment.setSentiment0(rs.getInt("CONT_SENT"));
 					sentiment.setSentiment0_perc(rs.getInt("PORCENT"));
 				}
-				if (rs.getInt("sentiment") == 1) {
+				if(rs.getInt("sentiment")==1) {
 					sentiment.setSentiment1(rs.getInt("CONT_SENT"));
 					sentiment.setSentiment1_perc(rs.getInt("PORCENT"));
 				}
-				if (rs.getInt("sentiment") == 2) {
+				if(rs.getInt("sentiment")==2) {
 					sentiment.setSentiment2(rs.getInt("CONT_SENT"));
 					sentiment.setSentiment2_perc(rs.getInt("PORCENT"));
 				}
-				if (rs.getInt("sentiment") == 3) {
+				if(rs.getInt("sentiment")==3) {
 					sentiment.setSentiment3(rs.getInt("CONT_SENT"));
 					sentiment.setSentiment3_perc(rs.getInt("PORCENT"));
 				}
-				if (rs.getInt("sentiment") == 4) {
+				if(rs.getInt("sentiment")==4) {
 					sentiment.setSentiment4(rs.getInt("CONT_SENT"));
 					sentiment.setSentiment4_perc(rs.getInt("PORCENT"));
 				}
 			}
+				
+			if(maxSent == 0)
+				sentiment.setMainSentiment("Muito negativo");
+			if(maxSent == 1)
+				sentiment.setMainSentiment("Negativo");
+			if(maxSent == 2)
+				sentiment.setMainSentiment("Neutro");
+			if(maxSent == 3)
+				sentiment.setMainSentiment("Positivo");
+			if(maxSent == 4)
+				sentiment.setMainSentiment("Muito positivo");		
+			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
