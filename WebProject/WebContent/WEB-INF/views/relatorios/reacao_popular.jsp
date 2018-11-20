@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<!-- Declaration to use JSTL -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,12 +27,18 @@
 <script src="assets/js/script.js"></script>
 
 </head>
-<body onload="trocaimagem();">
+<body>
 
 	<div class="metade">
 		<div class="card">
-			<div class="emoction"></div>
-			<div class="nome-emoction" id="nomeserie">Sentimento: Negativo
+			<div class="emoction">
+				<img src="${seriesSentiment.pic}" width="460px" height="300px" />
+			</div>
+			<div class="nome-emoction">
+				<b> Principal sentimento</b>: Negativo
+			</div>
+			<div class="hashtag">
+				<b> Hashtags: </b> ${seriesSentiment.hashtag}
 			</div>
 		</div>
 	</div>
@@ -38,31 +48,28 @@
 			<div class="table">
 				<div class="row">
 					<div class="icone-row" id="emo-5"></div>
-					<div class="valor-row">
-						<p id="number5"></p>
-
-					</div>
-					<div class="porcent-row">0%</div>
+					<div class="valor-row">${seriesSentiment.sentiment4}</div>
+					<div class="porcent-row">${seriesSentiment.sentiment4_perc}%</div>
 				</div>
 				<div class="row">
 					<div class="icone-row" id="emo-4"></div>
-					<div class="valor-row">8</div>
-					<div class="porcent-row">16%</div>
+					<div class="valor-row">${seriesSentiment.sentiment3}</div>
+					<div class="porcent-row">${seriesSentiment.sentiment3_perc}%</div>
 				</div>
 				<div class="row">
 					<div class="icone-row" id="emo-3"></div>
-					<div class="valor-row">23</div>
-					<div class="porcent-row">46%</div>
+					<div class="valor-row">${seriesSentiment.sentiment2}</div>
+					<div class="porcent-row">${seriesSentiment.sentiment2_perc}%</div>
 				</div>
 				<div class="row">
 					<div class="icone-row" id="emo-2"></div>
-					<div class="valor-row">18</div>
-					<div class="porcent-row">36%</div>
+					<div class="valor-row">${seriesSentiment.sentiment1}</div>
+					<div class="porcent-row">${seriesSentiment.sentiment1_perc}%</div>
 				</div>
 				<div class="row">
 					<div class="icone-row" id="emo-1"></div>
-					<div class="valor-row">1</div>
-					<div class="porcent-row">2%</div>
+					<div class="valor-row">${seriesSentiment.sentiment0}</div>
+					<div class="porcent-row">${seriesSentiment.sentiment0_perc}%</div>
 				</div>
 			</div>
 		</div>

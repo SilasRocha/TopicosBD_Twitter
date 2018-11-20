@@ -25,11 +25,8 @@ function analiseSentimento() {
 	go(url);
 }
 
-function trocaimagem(){
-	var x = document.getElementById("mySelect").options.namedItem("Flash").text;
-	document.getElementById("number5").innerHTML = x;	
-}
-
-function recebePrograma() {
-	document.getElementById('graf').style.backgroundImage = "url('../imagens/graf-The Voice Brasil.png')";
+function exibeDados() {
+	serie = document.getElementById("lista-serie").value;
+	var url = 'dados?serie=' + serie;
+	go(url);
 }

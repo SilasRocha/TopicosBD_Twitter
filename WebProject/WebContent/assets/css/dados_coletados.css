@@ -3,8 +3,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	
-	overflow-x: hidden;
-	background : url(../imagens/twitter_cover.jpg);
+	overflow-x: hidden;	
 	background-color: #f4f4f4;
 	
 	animation: show;
@@ -46,28 +45,28 @@ td {
 }
 
 .tabela {
-	width: 98%;
+	width: 1010px;
 	margin-left: 1%;
 	display: inline-table;
 	border-collapse: collapse;
+	table-layout: fixed
 }
 
 .tr-header {
 	background-color: #567BA0;
-	color: #ffffff;
-	
+	color: #ffffff;	
 	font-family: 'Pier Sans';
-	font-size: 22px;
-	
-	height: 40px;
+	font-size: 20px;	
+	height: 35px;
+	table-layout: fixed
 }
 
 .tr-line {
 	font-family: 'bariol';
-	font-size: 22px;
-	
-	height: 40px;
+	font-size: 18px;	
+	height: 10px;
 	color: #666666;
+	table-layout: fixed
 }
 .tr-line:nth-child(even) {
 	background-color: #E5E5FF;

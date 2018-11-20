@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class ConnectionFactory {
 	
-	static String PROPERTY_FILE = "config.properties";
+	static String PROPERTY_FILE = System.getProperty("catalina.base")+"\\wtpwebapps\\TwitterAnalyzer\\WEB-INF\\lib\\config.properties";
 	static String HOSTNAME;
 	static String DB_NAME;
 	static String DB_USER;

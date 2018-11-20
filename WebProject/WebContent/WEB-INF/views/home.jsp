@@ -31,7 +31,7 @@
 					<option>Selecione...</option>
 					<option value="1">Flash</option>
 					<option value="2">Greys Anatomy</option>
-					<option value="3">House</option>
+					<option value="3">House of Cards</option>
 					<option value="4">Supernatural</option>
 					<option value="5">The Walking Dead</option>
 				</select>
@@ -48,7 +48,7 @@
 					class="btn-opcao" id="reacao" value="Análise de Sentimento"></input>
 			</div>
 			<div class="opcao">
-				<input type="button" onclick="go('dados')"
+				<input type="button" onclick="exibeDados()"
 					class="btn-opcao" id="dados" value="Dados Coletados"></input>
 			</div>
 			<div class="opcao">
