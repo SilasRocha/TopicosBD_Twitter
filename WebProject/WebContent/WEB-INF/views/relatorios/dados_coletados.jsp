@@ -16,6 +16,7 @@
 
 <script src="assets/js/script.js"></script>
 <link href="assets/css/dados_coletados.css" rel="stylesheet" />
+<link rel="shortcut icon" href="assets/ico/favicon.png">
 </head>
 <body>
 <head>

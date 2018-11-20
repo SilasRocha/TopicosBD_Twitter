@@ -30,3 +30,9 @@ function exibeDados() {
 	var url = 'dados?serie=' + serie;
 	go(url);
 }
+
+function exibeGraficos() {
+	serie = document.getElementById("lista-serie").value;
+	var url = 'graficos?serie=' + serie;
+	go(url);
+}

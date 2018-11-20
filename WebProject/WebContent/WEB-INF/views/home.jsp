@@ -19,6 +19,8 @@
 
 <link href="assets/css/style.css" rel="stylesheet" />
 <script src="assets/js/script.js"></script>
+
+<link rel="shortcut icon" href="assets/ico/favicon.png">
 </head>
 
 <body>
@@ -43,16 +45,16 @@
 		</div>
 		
 		<div class="rodape">
-			<div class="opcao">
+			<div class="opcao1">
 				<input type="button" onclick="analiseSentimento()"
-					class="btn-opcao" id="reacao" value="Análise de Sentimento"></input>
+					class="btn-opcao" id="reacao" value="Sentimento"></input>
 			</div>
-			<div class="opcao">
+			<div class="opcao2">
 				<input type="button" onclick="exibeDados()"
 					class="btn-opcao" id="dados" value="Dados Coletados"></input>
 			</div>
-			<div class="opcao">
-				<input type="button" onclick="go('graficos')"
+			<div class="opcao3">
+				<input type="button" onclick="exibeGraficos()"
 					class="btn-opcao" id="graficos" value="Gráficos"></input>
 			</div>
 		</div>

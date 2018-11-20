@@ -25,6 +25,7 @@
 
 <link href="assets/css/reacao_popular.css" rel="stylesheet" />
 <script src="assets/js/script.js"></script>
+<link rel="shortcut icon" href="assets/ico/favicon.png">
 
 </head>
 <body>

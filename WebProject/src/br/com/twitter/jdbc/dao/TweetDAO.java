@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.twitter.jdbc.connection.*;
 import br.com.twitter.jdbc.model.*;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class TweetDAO {
 
@@ -176,5 +177,30 @@ public SeriesSentiment getSeriesSentiment(String serie) {
 		
 		return null;
 	}
-
+	
+	public DefaultCategoryDataset getDataSerie (String serie) {
+		String sql = "SELECT count(sentiment) as quantidade, sentiment, date FROM tweets WHERE serie=? group by date, sentiment order by date asc";
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, serie);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				int quantidade = rs.getInt("quantidade");
+				int sentiment = rs.getInt("sentiment");
+				String date = rs.getString("date");
+				
+				dataset.addValue(quantidade, Integer.toString(sentiment), date);				
+			}
+			stmt.close();
+			return dataset;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
 }
