@@ -1,5 +1,7 @@
 package br.com.twitter.controller;
 
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -112,28 +114,28 @@ public class IndexController extends HttpServlet {
 	@RequestMapping("/graficos")
 	public String analiseSentimentoGraficos(HttpServletRequest request, String serie, HttpSession session) {
 		LineChartGraphic graphic = new LineChartGraphic();
-		String graphicUrl = "";
+		String url;
 
 		switch (serie) {
 		case "1":
-			graphicUrl = graphic.generateGraphic("FLASH");
-			session.setAttribute("graphicPic", graphicUrl);		
+			url = graphic.generateGraphic("FLASH");
+			session.setAttribute("graphicPic", url);	
 			break;
 		case "2":
-			graphicUrl = graphic.generateGraphic("GREY");
-			session.setAttribute("graphicPic", graphicUrl);		
+			url = graphic.generateGraphic("GREY");
+			session.setAttribute("graphicPic", url);		
 			break;			
 		case "3":
-			graphicUrl = graphic.generateGraphic("HOUSE");
-			session.setAttribute("graphicPic", graphicUrl);		
+			url = graphic.generateGraphic("HOUSE");
+			session.setAttribute("graphicPic", url);		
 			break;			
 		case "4":			
-			graphicUrl = graphic.generateGraphic("SPN");
-			session.setAttribute("graphicPic", graphicUrl);		
+			url = graphic.generateGraphic("SPN");
+			session.setAttribute("graphicPic", url);		
 			break;			
 		case "5":
-			graphicUrl = graphic.generateGraphic("TWD");
-			session.setAttribute("graphicPic", graphicUrl);		
+			url = graphic.generateGraphic("TWD");
+			session.setAttribute("graphicPic", url);		
 			break;			
 		default:
 			System.out.println("Série não mapeada");

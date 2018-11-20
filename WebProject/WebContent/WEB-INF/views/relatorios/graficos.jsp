@@ -20,8 +20,8 @@
 <body onload="recebePrograma();">
 	<div class="metade">
 		<div class="card">
-			<div class="emoction">
-				<img src="${graphicPic}" width="460px" height="300px" />
+			<div class="grafico">
+				<img src="${graphicPic}"/>				
 			</div>
 		</div>
 	</div>

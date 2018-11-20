@@ -48,14 +48,15 @@ html, body {
 	display:block;
 }
 
-.emoction {
-	width: 90%;
-	height: 90%;
+.grafico {
+	width: 550px;
+	height: 400px;
 	
-	margin-top: 2%;
-	margin-left: 5%;
-
-	display:inline-block;
+	position: relative;
+    top: 5%;
+    left: 15%;
+    
+    display:inline-block;
 	
 	background-position: center;
 	background-repeat: no-repeat;
