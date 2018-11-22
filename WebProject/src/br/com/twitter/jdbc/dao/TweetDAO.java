@@ -152,7 +152,11 @@ public SeriesSentiment getSeriesSentiment(String serie) {
 	
 	public List<Tweet> getTweetsSerie(String serie) {
 
-		String sql = "SELECT date, text, processed_text, sentiment FROM tweets WHERE serie=? order by date desc";
+		String sql =  "Select T3.date, T3.text, T3.processed_text, T3.sentiment FROM (" + 
+				"Select * from (SELECT date, text, processed_text, sentiment,serie FROM tweets WHERE DATE LIKE '%out%' order by date asc) as T1 " + 
+				"union " + 
+				"select * From (SELECT date, text, processed_text, sentiment,serie FROM tweets WHERE DATE LIKE '%nov%' order by date asc) as T2 " + 
+				") as T3 WHERE T3.serie=?;";
 		List<Tweet> tweets = new ArrayList<Tweet>();
 		
 		try {
