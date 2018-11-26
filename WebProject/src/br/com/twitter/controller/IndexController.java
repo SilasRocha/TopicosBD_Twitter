@@ -177,7 +177,7 @@ public class IndexController extends HttpServlet {
 			break;
 		}
 
-		return "relatorios/graficos-js";
+		return "relatorios/graficos";
 	}
 
 	@RequestMapping("/escolhaserie")
