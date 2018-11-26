@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.twitter.jdbc.model.*;
 import br.com.twitter.graphics.LineChartGraphic;
+import br.com.twitter.graphics.LineChartGraphicJS;
 import br.com.twitter.jdbc.dao.*;
 
 @Controller
@@ -143,6 +144,40 @@ public class IndexController extends HttpServlet {
 		}
 
 		return "relatorios/graficos";
+	}
+	
+	@RequestMapping("/graficoJS")
+	public String analiseGraficoJS(HttpServletRequest request, String serie, HttpSession session) {
+		LineChartGraphicJS graphic = new LineChartGraphicJS();
+		String result;
+
+		switch (serie) {
+		case "1":
+			result = graphic.generateGraphic("FLASH");
+			session.setAttribute("dataset", result);
+			break;
+		case "2":
+			result = graphic.generateGraphic("GREY");
+			session.setAttribute("dataset", result);			
+			break;			
+		case "3":
+			result = graphic.generateGraphic("HOUSE");
+			session.setAttribute("dataset", result);
+			break;			
+		case "4":			
+			result = graphic.generateGraphic("SPN");
+			session.setAttribute("dataset", result);		
+			break;			
+		case "5":
+			result = graphic.generateGraphic("TWD");
+			session.setAttribute("dataset", result);
+			break;			
+		default:
+			System.out.println("Série não mapeada");
+			break;
+		}
+
+		return "relatorios/graficos-js";
 	}
 
 	@RequestMapping("/escolhaserie")

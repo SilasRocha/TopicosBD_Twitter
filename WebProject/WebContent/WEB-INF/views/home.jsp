@@ -47,7 +47,7 @@
 		<div class="rodape">
 			<div class="opcao1">
 				<input type="button" onclick="analiseSentimento()"
-					class="btn-opcao" id="reacao" value="Sentimento"></input>
+					class="btn-opcao" id="reacao" value="Análise"></input>
 			</div>
 			<div class="opcao2">
 				<input type="button" onclick="exibeDados()"
@@ -55,7 +55,7 @@
 			</div>
 			<div class="opcao3">
 				<input type="button" onclick="exibeGraficos()"
-					class="btn-opcao" id="graficos" value="Gráficos"></input>
+					class="btn-opcao" id="graficos" value="Gráfico"></input>
 			</div>
 		</div>
 	</div>

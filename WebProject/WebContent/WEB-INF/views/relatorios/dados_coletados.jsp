@@ -25,17 +25,37 @@
 		<table class="tabela">
 			<tr class="tr-header">
 				<th width="100px">Data</th>
-				<th width="350px">Tweet Puro</th>
-				<th width="340px">Tweet Pós-Processamento</th>
+				<th width="300px">Tweet Puro</th>
+				<th width="300px">Tweet Pós-Processamento</th>
 				<th width="105px">Sentimento</th>
 			</tr>
 
 			<c:forEach items="${tweetsDataset}" var="tweet">
 				<tr class="tr-line">
-					<td width="200px"><c:out value="${tweet.date}" /></td>
-					<td width="200px"><c:out value="${tweet.text}" /></td>
-					<td width="200px"><c:out value="${tweet.processedText}" /></td>
-					<td width="100px"><c:out value="${tweet.sentiment}" /></td>
+					<td width="10%"><c:out value="${tweet.date}" /></td>
+					<td width="40%"><c:out value="${tweet.text}" /></td>
+					<td width="40%"><c:out value="${tweet.processedText}" /></td>					
+					
+					<c:if test="${tweet.sentiment eq '0'}">					
+						<td width="10%"><c:out value="Super negativo" /></td>										
+					</c:if>
+					
+					<c:if test="${tweet.sentiment eq '1'}">					
+						<td width="10%"><c:out value="Negativo" /></td>										
+					</c:if>
+					
+					<c:if test="${tweet.sentiment eq '2'}">					
+						<td width="10%"><c:out value="Neutro" /></td>										
+					</c:if>
+					
+					<c:if test="${tweet.sentiment eq '3'}">					
+						<td width="10%"><c:out value="Positivo" /></td>										
+					</c:if>
+					
+					<c:if test="${tweet.sentiment eq '4'}">					
+						<td width="10%"><c:out value="Super positivo" /></td>										
+					</c:if>
+					
 				</tr>
 			</c:forEach>
 		</table>

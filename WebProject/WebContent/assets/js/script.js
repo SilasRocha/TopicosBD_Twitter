@@ -33,6 +33,6 @@ function exibeDados() {
 
 function exibeGraficos() {
 	serie = document.getElementById("lista-serie").value;
-	var url = 'graficos?serie=' + serie;
+	var url = 'graficoJS?serie=' + serie;
 	go(url);
 }
